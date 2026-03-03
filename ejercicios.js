@@ -140,26 +140,36 @@ numeros.sort((a, b) => b - a)
 
 // Recibimos una matriz de cadenas de texto. Tenemos que localizar la posición de la palabra "JavaScript" en la matriz y devolver su posición como un array de dos elementos: el índice de la fila y el índice de la columna
 
+// MATRIZ: Array de 3 filas, cada una con 3 elementos
+
 const matrix = [
-['HTML', 'CSS', 'JavaScript'],
-['Java', 'C++', 'Python'],
-['Ruby', 'Go', 'Swift']
+    ['HTML', 'CSS', 'JavaScript'],  // Fila 0
+    ['Java', 'C++', 'Python'],      // Fila 1
+    ['Ruby', 'Go', 'Swift']         // Fila 2
 ]
 
+// Llamamos la función y guardamos el resultado
 const position = findJavaScript(matrix)
-console.log(position) // -> [0, 2]
+console.log(position) // -> [0, 2] significa: fila 0, columna 2
 
 function findJavaScript(matrix) {
+    // 🔄 Primer loop: recorre las FILAS (i = 0, 1, 2)
     for (let i = 0; i < matrix.length; i++) {
+        
+        // 🔄 Segundo loop: recorre las COLUMNAS de cada fila (j = 0, 1, 2)
         for (let j = 0; j < matrix[i].length; j++) {
+            
+            // 🔍 Revisamos cada elemento: matrix[fila][columna]
             if (matrix[i][j] === 'JavaScript') {
+                // ✅ ¡Encontrado! Devolvemos [fila, columna]
                 return [i, j]
             }
         }
     }
-    return [-1, -1] // Si no se encuentra, devolvemos [-1, -1]            
+    
+    // ❌ Si terminamos los loops sin encontrarlo, devolvemos [-1, -1]
+    return [-1, -1]            
 }
-
 
 
 
