@@ -5,14 +5,14 @@ const sales = [
 ];  
 
 function calculateTotalSales(sales) {
-   let total = 0;
-   for (let i = 0; i < sales.length; i++) {
+let total = 0;
+    for (let i = 0; i < sales.length; i++) {
     
     total += sales[i].quantity *sales[i].price;
-   
-   }
-   
-   return total;
+
+    }
+
+    return total;
 
 }
 
@@ -172,6 +172,7 @@ function findJavaScript(matrix) {
 }
 
 // Ejercicio 8
+
 // En una biblioteca queremos saber qué libro es el que menos páginas tiene y el que más páginas. Por suerte, no hay dos libros con el mismo número de páginas.
 // Necesitamos que la función reciba un array de números, sin ordenar, y que devuelva un array de dos posiciones con el índice del libro con menos páginas y el índice del libro con más páginas.
 
@@ -179,11 +180,75 @@ function minAndMaxWord(words) {
     let minIndex = 0
     let maxIndex = 0
 
-    
+    for (let i = 1; i < words.length; i++) {
+        if (words[i] < words[minIndex]) {
+            minIndex = i
+        }
+        if (words[i] > words[maxIndex]) {
+            maxIndex = i
+        }
+    }
 
-
-
+    return [minIndex, maxIndex]
 }
+
+/**
+ *  Encuentra el índice del libro con menos páginas
+ *  y el índice del libro con más páginas dentro de un array.
+ *
+ *  @param {number[]} words - Array de números que representa la cantidad de páginas de cada libro.
+ *  @returns {[number, number]} Array con dos posiciones:
+ *          [indiceDelLibroConMenosPaginas, indiceDelLibroConMasPaginas]
+ */
+function minAndMaxWord(words) {
+// Inicializamos tomando el primer elemento como referencia
+let minIndex = 0
+let maxIndex = 0
+
+    // Recorremos el array desde el índice 1
+    // porque el índice 0 ya se usó como punto de partida
+    for (let i = 1; i < words.length; i++) {
+    
+    // Si encontramos un valor menor al mínimo actual,
+    // actualizamos el índice del mínimo
+    if (words[i] < words[minIndex]) {
+    minIndex = i
+    }
+
+    // Si encontramos un valor mayor al máximo actual,
+    // actualizamos el índice del máximo
+    if (words[i] > words[maxIndex]) {
+    maxIndex = i
+    }
+}   
+
+  // Devolvemos los índices encontrados
+    return [minIndex, maxIndex]
+}
+
+// ===== EJERCICIO 9 OBJETOS =====
+
+/* Tenemos una función que recibe dos parámetros. name y subs. Haz que la función devuelva un objeto con la siguiente información: name con el valor del parámetro name subscribers con el valor del parámetro subs hash, con el valor de la longitud del string name multiplicado por el parámetro subs Un método getStatus que devuelva el texto El canal de <name> tiene <subs> suscriptores. Por ejemplo, para name = 'Dani' y subs = 100, el método getStatus devolvería El canal de Dani tiene 100 suscriptores. ¡Ojo! El método getStatus debe devolver el texto, NO imprimirlo por consola. */
+
+
+function createObject(name, subs) { 
+    return {
+        name: name, 
+        subscribers: subs, 
+        hash: name.length * subs, 
+        getStatus: function() {
+            return `El canal de ${this.name} tiene ${this.subscribers} suscriptores.`
+        }
+    }
+}
+
+// prueba de la función
+const test = createObject("Dani", 100)
+console.log(test.getStatus()) // El canal de Dani tiene 100 suscriptores.
+
+
+
+
 
 
 
