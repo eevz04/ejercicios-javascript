@@ -251,10 +251,3 @@ console.log(test.getStatus()) // El canal de Dani tiene 100 suscriptores.
 
 
 
-
-
-
-
-
-
-
